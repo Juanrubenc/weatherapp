@@ -19,7 +19,6 @@ function App() {
     navigator.geolocation.getCurrentPosition(success)
   }, [])
 
-  console.log(coords)
 
 
   return (
