@@ -45,9 +45,6 @@ const CardWeather = ({ lat, lon, }) => {
     }
         , [lat])
 
-
-    console.log(weather)
-
     if (isLoading) {
         return <LoadingScreen />
     } else {
