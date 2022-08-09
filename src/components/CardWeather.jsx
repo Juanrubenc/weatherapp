@@ -12,7 +12,7 @@ const CardWeather = ({ lat, lon, }) => {
     const [weather, setWeather] = useState({})
     const [isLoading, setisLoading] = useState(true)
     const [temp, setTemp] = useState()
-    const [windSpeed , setWindSpeed] = useState()
+    const [windSpeed, setWindSpeed] = useState()
     const [isCelsius, setIsCelsius] = useState(true)
 
 
@@ -56,19 +56,22 @@ const CardWeather = ({ lat, lon, }) => {
                 <div className='main'>
                     <div className='info-main'>
                         <div className='change'>
-                        <span className='app-name'>Weather</span>
-                        <span className='FC' onClick={handleClick}>{isCelsius ? 'Change to °F' : 'Change to °C'}</span>
+                            <span className='app-name'>Weather</span>
+                            <span className='FC' onClick={handleClick}>{isCelsius ? 'Change to °F' : 'Change to °C'}</span>
                         </div>
                         <p className='city'>{`${weather.name}, ${weather.sys.country}`}</p>
-                        <p className='temp'>{isCelsius ? temp.celsius : temp.farenheit}</p>
-                        <div>
-                            <img src={weather && `http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`} alt="" />
-                            <p>{weather.weather[0].main}</p>
+                        <div className='temp-container'>
+                                <p className='temp'>{isCelsius ? temp.celsius : temp.farenheit}</p>
+                            <div className='img-container'>
+                                <img src={weather && `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`} alt="" />
+                                <p>{weather.weather[0].main}/ {weather.weather[0].description}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className='right'>
                     <div className='weather-info'>
+                        <h2>More info</h2>
                         <ul>
                             <li className='list'><i className="fa-solid fa-wind"></i> <span><b>Wind Speed:</b></span> {isCelsius ? windSpeed.km : windSpeed.mh}</li>
                             <li className='list'><i className="fa-solid fa-gauge-high"></i> <span><b>Pressure:</b></span> {weather.main.pressure} hPa</li>
@@ -79,7 +82,7 @@ const CardWeather = ({ lat, lon, }) => {
             </div>
         )
     }
-    }
+}
 
 
 export default CardWeather
